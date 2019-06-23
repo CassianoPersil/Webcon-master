@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     if (login.isEmpty() || senha.isEmpty()) {
                         Toast.makeText(getBaseContext(), "Há Campo(s) Vazio(s)", Toast.LENGTH_SHORT).show();
                     } else {
-                        url = "http://192.168.1.5/login/logar.php";
+                        url = "http://192.168.1.5/appbov/user/login.php";
                         parametros = "email=" + login + "&senha=" + senha;
                         new SolicitaDados().execute(url);
                     }

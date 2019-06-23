@@ -50,7 +50,7 @@ public class CadActivity extends AppCompatActivity {
                     }else if(!senha.equals(repSenha)){
                         Toast.makeText(getBaseContext(), "Senhas não coincidem!", Toast.LENGTH_SHORT).show();
                     }else{
-                        url = "http://192.168.1.5/login/registrar.php";
+                        url = "http://192.168.1.5/appbov/user/insert_user.php";
                         parametros = "nome=" + login + "&email=" + email + "&senha=" + senha;
                         new SolicitaDados().execute(url);
                     }
@@ -72,7 +72,7 @@ public class CadActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Este e-email ja esta cadastrado", Toast.LENGTH_SHORT).show();
             }else if (resultado != null && !resultado.isEmpty() && resultado.contains("Registro_Ok")){
                 Toast.makeText(getApplicationContext(),"Registro concluido com sucesso!", Toast.LENGTH_SHORT).show();
-                Intent abreInicio = new Intent(CadActivity.this,MainActivity.class);
+                Intent abreInicio = new Intent(CadActivity.this, MainActivity.class);
                 startActivity(abreInicio);
             }else{
                 Toast.makeText(getApplicationContext(), "Ocorreu um erro: "+resultado, Toast.LENGTH_SHORT).show();
