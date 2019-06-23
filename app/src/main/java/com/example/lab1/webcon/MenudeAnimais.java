@@ -96,7 +96,8 @@ public class MenudeAnimais extends AppCompatActivity
             parametros = "breed=" + 3;
             new SolicitaDados().execute(url);
         }else if(id == R.id.nav_breed){
-            Intent intent = new Intent(getBaseContext(), GuzeraActivity.class);
+            Intent intent = new Intent(getBaseContext(), BreedActivity.class);
+            intent.putExtra("id", getIntent().getExtras().getString("id"));
             startActivity(intent);
         }
 
