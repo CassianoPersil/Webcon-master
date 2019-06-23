@@ -1,5 +1,6 @@
 package com.example.lab1.webcon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -78,18 +79,15 @@ public class MenudeAnimais extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.Nelore) {
+            Intent intent = new Intent(getBaseContext(),NeloreActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.Guzera) {
+            Intent intent = new Intent(getBaseContext(),GuzeraActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.Sindi) {
+            Intent intent = new Intent(getBaseContext(),SindiActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
