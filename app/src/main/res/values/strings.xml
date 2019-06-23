@@ -14,4 +14,23 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <string-array name="spinner_opcoes">
+        <item>Resumo</item>
+        <item>Ambiente</item>
+        <item>Instalações</item>
+        <item>Peso</item>
+    </string-array>
+    <string-array name="spinner_opcoes2">
+        <item>Resumo</item>
+        <item>Ambiente</item>
+        <item>Peso</item>
+    </string-array>
+
+
+    <string-array name="Raças">
+        <item>Guzera</item>
+        <item>Nelore</item>
+        <item>Sindi</item>
+    </string-array>
 </resources>
