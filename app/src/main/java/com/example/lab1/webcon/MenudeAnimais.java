@@ -1,6 +1,7 @@
 package com.example.lab1.webcon;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,9 +15,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Toast;
 
 public class MenudeAnimais extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    String url = "";
+    String parametros = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,18 +84,66 @@ public class MenudeAnimais extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.Nelore) {
-            Intent intent = new Intent(getBaseContext(),NeloreActivity.class);
-            startActivity(intent);
+            url = "http://192.168.1.5/appbov/breed/selectBreed.php";
+            parametros = "breed=" + 2;
+            new SolicitaDados().execute(url);
         } else if (id == R.id.Guzera) {
-            Intent intent = new Intent(getBaseContext(),GuzeraActivity.class);
-            startActivity(intent);
+            url = "http://192.168.1.5/appbov/breed/selectBreed.php";
+            parametros = "breed=" + 1;
+            new SolicitaDados().execute(url);
         } else if (id == R.id.Sindi) {
-            Intent intent = new Intent(getBaseContext(),SindiActivity.class);
+            url = "http://192.168.1.5/appbov/breed/selectBreed.php";
+            parametros = "breed=" + 3;
+            new SolicitaDados().execute(url);
+        }else if(id == R.id.nav_breed){
+            Intent intent = new Intent(getBaseContext(), GuzeraActivity.class);
             startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private class SolicitaDados extends AsyncTask<String, Void, String> {
+
+
+        @Override
+        protected String doInBackground(String... urls) {
+            return Conexao.postDados(urls[0], parametros);
+        }
+
+        @Override
+        protected void onPostExecute(String resultado) {
+            String dados[] = resultado.split(";");
+            if(Integer.parseInt(dados[0]) == 1){
+                Intent intent = new Intent(getBaseContext(), GuzeraActivity.class);
+                intent.putExtra("gerais", dados[1]);
+                intent.putExtra("ambientais", dados[2]);
+                intent.putExtra("peso", dados[3]);
+                startActivity(intent);
+            }else if(Integer.parseInt(dados[0]) == 2){
+                Intent intent = new Intent(getBaseContext(), NeloreActivity.class);
+                intent.putExtra("gerais", dados[1]);
+                intent.putExtra("ambientais", dados[2]);
+                intent.putExtra("peso", dados[3]);
+                intent.putExtra("instalacoes", dados[4]);
+                startActivity(intent);
+            }else{
+                Intent intent = new Intent(getBaseContext(), SindiActivity.class);
+                intent.putExtra("gerais", dados[1]);
+                intent.putExtra("ambientais", dados[2]);
+                intent.putExtra("peso", dados[3]);
+                intent.putExtra("instalacoes", dados[4]);
+                startActivity(intent);
+            }
+        }
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 }

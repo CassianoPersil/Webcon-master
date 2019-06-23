@@ -21,13 +21,9 @@
     <item android:title="Informações">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Compartilhe" />
-            <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_breed"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Envie" />
+                android:title="Criação" />
         </menu>
     </item>
 

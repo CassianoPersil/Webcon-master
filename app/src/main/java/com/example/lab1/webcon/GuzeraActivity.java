@@ -1,5 +1,7 @@
 package com.example.lab1.webcon;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GuzeraActivity extends AppCompatActivity {
 
@@ -30,20 +33,15 @@ public class GuzeraActivity extends AppCompatActivity {
                 switch (spinner.getSelectedItemPosition()){
                     case 0:
                         titulo.setText("Características Gerais");
-                        descricao.setText("-Porte grande com pelagem que varia do cinza claro ao cinza escuro, havendo tons pardos e prateados;\n" +
-                                "-A cabeça é relativamente curta, larga e expressiva, com perfil subcôncavo a retilíneo; A fronte é moderadamente larga, " +
-                                "subcôncava ou quase plana;");
+                        descricao.setText(getIntent().getExtras().getString("gerais"));
                         break;
                     case 1:
                         titulo.setText("Características Ambientais");
-                        descricao.setText("-Pele preta, bem pigmentada, com membros bem desenvolvidos e musculados, permitem ao guzerá resistir a longas " +
-                                "caminhadas sob o sol tropical, à procura de água e alimento. Adapta-se no Nordeste brasileiro, desde áreas férteis litorâneas, " +
-                                "no agreste, até o sertão semiárido.");
+                        descricao.setText(getIntent().getExtras().getString("ambientais"));
                         break;
                     case 2:
                         titulo.setText("Peso");
-                        descricao.setText("-O ganho em peso dos animais da raça é muito bom, ultrapassando com facilidade médias superiores a " +
-                                "1.000 gramas/dia no confinamento.");
+                        descricao.setText(getIntent().getExtras().getString("peso"));
                         break;
                 }
             }
@@ -55,3 +53,4 @@ public class GuzeraActivity extends AppCompatActivity {
         });
     }
 }
+

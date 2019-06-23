@@ -16,11 +16,11 @@ public class SindiActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guzera);
+        setContentView(R.layout.activity_sindi);
 
-        spinner = findViewById(R.id.spinner_guzera);
-        titulo = findViewById(R.id.tituloDescGuzera);
-        descricao = findViewById(R.id.descGuzera);
+        spinner = findViewById(R.id.spinner_Sindi);
+        titulo = findViewById(R.id.tituloDescSindi);
+        descricao = findViewById(R.id.descSindi);
 
         ArrayAdapter<CharSequence> adapter =ArrayAdapter.createFromResource(this,R.array.spinner_opcoes2, R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -30,20 +30,15 @@ public class SindiActivity extends AppCompatActivity {
                 switch (spinner.getSelectedItemPosition()){
                     case 0:
                         titulo.setText("Características Gerais");
-                        descricao.setText("-Porte grande com pelagem que varia do cinza claro ao cinza escuro, havendo tons pardos e prateados;\n" +
-                                "-A cabeça é relativamente curta, larga e expressiva, com perfil subcôncavo a retilíneo; A fronte é moderadamente larga, " +
-                                "subcôncava ou quase plana;");
+                        descricao.setText(getIntent().getExtras().getString("gerais"));
                         break;
                     case 1:
                         titulo.setText("Características Ambientais");
-                        descricao.setText("-Pele preta, bem pigmentada, com membros bem desenvolvidos e musculados, permitem ao guzerá resistir a longas " +
-                                "caminhadas sob o sol tropical, à procura de água e alimento. Adapta-se no Nordeste brasileiro, desde áreas férteis litorâneas, " +
-                                "no agreste, até o sertão semiárido.");
+                        descricao.setText(getIntent().getExtras().getString("ambientais"));
                         break;
                     case 2:
                         titulo.setText("Peso");
-                        descricao.setText("-O ganho em peso dos animais da raça é muito bom, ultrapassando com facilidade médias superiores a " +
-                                "1.000 gramas/dia no confinamento.");
+                        descricao.setText(getIntent().getExtras().getString("peso"));
                         break;
                 }
             }
